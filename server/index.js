@@ -5,13 +5,13 @@ var bodyParser = require('body-parser');
 var items = require('../database-mongo');
 
 var app = express();
+app.use(bodyParser.urlencoded({ extended: false }))
+ 
+// parse application/json
+app.use(bodyParser.json());
 
 // UNCOMMENT FOR REACT
 app.use(express.static(__dirname + '/../react-client/dist'));
-
-// UNCOMMENT FOR ANGULAR
-// app.use(express.static(__dirname + '/../angular-client'));
-// app.use(express.static(__dirname + '/../node_modules'));
 
 app.get('/items', function (req, res) {
   items.selectAll(function(err, data) {
@@ -19,6 +19,7 @@ app.get('/items', function (req, res) {
       res.sendStatus(500);
     } else {
       res.json(data);
+
     }
   });
 });
