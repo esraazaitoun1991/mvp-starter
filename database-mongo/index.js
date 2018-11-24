@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/test');
+mongoose.connect('mongodb://<esraa.project>:<esraa123456789>@ds115664.mlab.com:15664/phone-book');
 
 var db = mongoose.connection;
 

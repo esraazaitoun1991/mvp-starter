@@ -4,7 +4,7 @@ class Search extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			term: ''
+			term: '',
 		},
 		this.onChange = this.onChange.bind(this),
     this.search = this.search.bind(this)
@@ -21,8 +21,12 @@ class Search extends React.Component {
     return (
     	<div>
       <h4>Add more phone numbers!</h4>
-      Enter a name: <input value={this.state.terms} onChange={this.onChange.bind(this)}/>       
+      Enter the name: <input value={this.state.terms} onChange={this.onChange.bind(this)}/>       
+      <button onClick={this.search.bind(this)}> Add Name </button>
+      <div>
+      Enter the phone number: <input value={this.state.terms} onChange={this.onChange.bind(this)}/>       
       <button onClick={this.search.bind(this)}> Add Phone Number </button>
+      </div>
     </div>
     ) 
   }
