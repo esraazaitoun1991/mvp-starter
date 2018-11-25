@@ -22,7 +22,9 @@ class List extends React.Component {
     <div>
       <h4> Phones List </h4>
       <div id = "input1">
-      There are { this.props.items.length } phones.
+      There are { this.props.items.length } phones.<form>
+      <button id = "button">Refresh</button>
+      </form>
       {this.props.items.map(item => (
       <div className="item" key={item.name}>{item.name}:    {item.phoneNumber}</div>
       ))}
