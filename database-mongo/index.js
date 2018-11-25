@@ -11,21 +11,38 @@ db.once('open', function() {
   console.log('mongoose connected successfully');
 });
 
-var itemSchema = mongoose.Schema({
-  quantity: Number,
-  description: String
+var phoneSchema = mongoose.Schema({
+  name: String,
+  phoneNumber: Number
 });
 
-var Item = mongoose.model('Item', itemSchema);
+var Phone = mongoose.model('Phone', phoneSchema);
+var save = (data) => {
+  let phone = new Phone(data);
+  phone.save(function(err) {
+    if (err) {
+      console.log("error", err);
+      return handleError(err);
+    }
+    console.log('Saved correctly');
+  })
+}
+var get = (name, callback) => {
+  Phone.findOne({name: name}, function (err, data) {
+    callback(data);
+  });
+}
 
 var selectAll = function(callback) {
-  Item.find({}, function(err, items) {
+  Phone.find({}, function(err, phones) {
     if(err) {
       callback(err, null);
     } else {
-      callback(null, items);
+      callback(null, phones);
     }
   });
 };
 
 module.exports.selectAll = selectAll;
+module.exports.save = save;
+module.exports.get=get

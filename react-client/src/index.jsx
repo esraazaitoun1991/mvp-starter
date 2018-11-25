@@ -8,9 +8,9 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = { 
-      items: []
+      phones: []
     }
-    //this.componentDidMount = this.componentDidMount.bind(this)
+    this.Search = this.Search.bind(this)
   }
 
   componentDidMount() {
@@ -27,11 +27,19 @@ class App extends React.Component {
     });
   }
 
+
+  Search(data){
+    console.log("we are in the father APP",data.name,data.phone)
+    var a=this.state.phones
+    a.push(data)
+    this.setState({phones: a});
+  }
+
   render () {
     return (<div>
       <h1>Phone Book</h1>
-      <List items={this.state.items}/>
-      <Search/>
+      <List items={this.state.phones}/>
+      <Search onSearch={this.Search}/>
     </div>)
   }
 }

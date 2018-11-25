@@ -1,10 +1,12 @@
 import React from 'react';
+import $ from 'jquery';
 
 class Search extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			term: '',
+			name: 'Esraa',
+			phone:'078025'
 		},
 		this.onChange = this.onChange.bind(this),
     this.search = this.search.bind(this)
@@ -15,18 +17,15 @@ class Search extends React.Component {
     });
   }
   search() {
-    this.props.onSearch(this.state.term);
+    this.props.onSearch(this.state);
   }
   render() {
     return (
     	<div>
-      <h4>Add more phone numbers!</h4>
-      Enter the name: <input value={this.state.terms} onChange={this.onChange.bind(this)}/>       
-      <button onClick={this.search.bind(this)}> Add Name </button>
-      <div>
-      Enter the phone number: <input value={this.state.terms} onChange={this.onChange.bind(this)}/>       
-      <button onClick={this.search.bind(this)}> Add Phone Number </button>
-      </div>
+      <h4>Add more to phone book</h4>
+      Enter the name: <input id='name' value={this.state.name} onChange={this.onChange.bind(this)}/>       
+      Enter the phone number: <input id='phone' value={this.state.phone} onChange={this.onChange.bind(this)}/>  
+      <button onClick={this.search.bind(this)}> Add To Phone Book </button>
     </div>
     ) 
   }
