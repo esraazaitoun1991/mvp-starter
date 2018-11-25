@@ -1,7 +1,9 @@
+/*Add background image to the html page.*/
 body {
 background-image: url("https://wallpapertag.com/wallpaper/full/9/3/b/114838-download-cute-wallpapers-tumblr-1920x1200-for-mobile.jpg");
 background-repeat: no-repeat;
 }
+/*Decoration the h1,h4,input, and buttons.*/
 h1 {
 	color: black;
     text-shadow: 3px 2px gray;

@@ -19,6 +19,7 @@ app.get('/items', function (req, res) {
     }
   });
 });
+// POST request: recive the data frome clinet and save them on the data base.
 app.post('/items' , function (req,res){
 	console.log('req.body :',req.body);
 	var name = req.body.phones.name;

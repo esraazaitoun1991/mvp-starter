@@ -17,6 +17,7 @@ class Search extends React.Component {
   saveNewPhone() {
     this.props.saveNewPhone(this.state);
   }
+  // Render the input text and the button, first input text for name and the seconde one for phone number. The button when clicked it send the inputs to the server.
   render() {
     return (
     	<div>

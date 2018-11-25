@@ -10,12 +10,12 @@ db.on('error', function() {
 db.once('open', function() {
   console.log('mongoose connected successfully');
 });
-
+// Creat schema contain name and phone number.
 var phoneSchema = mongoose.Schema({
   name: String,
   phoneNumber: Number
 });
-
+// Add save function to data base to save new add.
 var Phone = mongoose.model('Phone', phoneSchema);
 var save = (data) => {
   let phone = new Phone(data);

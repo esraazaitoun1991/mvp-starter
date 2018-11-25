@@ -26,6 +26,7 @@ class App extends React.Component {
       }
     });
   }
+  // POST request to take the data(name and phone number) from the input text, and send it to the server.
   addToPhone (term) {
     console.log(term);
     $.ajax({
