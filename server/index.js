@@ -1,20 +1,16 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-// UNCOMMENT THE DATABASE YOU'D LIKE TO USE
-// var items = require('../database-mysql');
-var items = require('../database-mongo');
-
+var phones = require('../database-mongo');
+var db = require('../database-mongo/index.js');
 var app = express();
 app.use(bodyParser.urlencoded({ extended: false }))
- 
-// parse application/json
+
 app.use(bodyParser.json());
 
-// UNCOMMENT FOR REACT
 app.use(express.static(__dirname + '/../react-client/dist'));
 
 app.get('/items', function (req, res) {
-  items.selectAll(function(err, data) {
+  phones.selectAll(function(err, data) {
     if(err) {
       res.sendStatus(500);
     } else {
@@ -23,6 +19,14 @@ app.get('/items', function (req, res) {
     }
   });
 });
+app.post('/items' , function (req,res){
+	console.log('req.body :',req.body);
+	var name = req.body.phones.name;
+	var phoneNumber = req.body.phones.phoneNumber;
+	db.save({name:name, phoneNumber:phoneNumber} , function(test){
+		res.send(req.body.phones)
+	})
+})
 
 var port = process.env.PORT || 3000 ;
 app.listen(port, function() {

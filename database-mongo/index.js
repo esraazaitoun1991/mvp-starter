@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://<esraa.project>:<esraa123456789>@ds115664.mlab.com:15664/phone-book');
+mongoose.connect('mongodb://esraa.project:esraa123456789@ds115664.mlab.com:15664/phone-book');
 
 var db = mongoose.connection;
 
@@ -45,4 +45,4 @@ var selectAll = function(callback) {
 
 module.exports.selectAll = selectAll;
 module.exports.save = save;
-module.exports.get=get
+module.exports.get = get

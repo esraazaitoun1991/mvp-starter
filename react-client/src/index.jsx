@@ -18,7 +18,7 @@ class App extends React.Component {
       url: '/items', 
       success: (data) => {
         this.setState({
-          items: data
+          phones: data
         })
       },
       error: (err) => {
@@ -26,10 +26,21 @@ class App extends React.Component {
       }
     });
   }
-
-
+  addToPhone (term) {
+    console.log(term);
+    $.ajax({
+      type: 'POST',
+      url:'/items',
+      contentType: 'application/json',
+      data: JSON.stringify({phones: term}),
+      success: (data) =>{
+        console.log("data",data);
+         this.setState({phones: data});
+      }
+    })
+  }
   Search(data){
-    console.log("we are in the father APP",data.name,data.phone)
+    console.log("we are in the father APP",data.name,data.phoneNumber)
     var a=this.state.phones
     a.push(data)
     this.setState({phones: a});
@@ -38,8 +49,9 @@ class App extends React.Component {
   render () {
     return (<div>
       <h1>Phone Book</h1>
-      <List items={this.state.phones}/>
-      <Search onSearch={this.Search}/>
+      <List items={this.state.phones} y="lll" d="nana"/>
+      <Search saveNewPhone={this.addToPhone}/>
+
     </div>)
   }
 }

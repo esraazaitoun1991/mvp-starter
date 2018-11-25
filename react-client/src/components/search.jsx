@@ -5,27 +5,27 @@ class Search extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			name: 'Esraa',
-			phone:'078025'
-		},
-		this.onChange = this.onChange.bind(this),
-    this.search = this.search.bind(this)
+			name: '',
+			phoneNumber:''
+		}
 	}
-  onChange (e) {
+  onChange(e) {
     this.setState({
-      term: e.target.value
+      [e.target.name]: e.target.value
     });
   }
-  search() {
-    this.props.onSearch(this.state);
+  saveNewPhone() {
+    this.props.saveNewPhone(this.state);
   }
   render() {
     return (
     	<div>
       <h4>Add more to phone book</h4>
-      Enter the name: <input id='name' value={this.state.name} onChange={this.onChange.bind(this)}/>       
-      Enter the phone number: <input id='phone' value={this.state.phone} onChange={this.onChange.bind(this)}/>  
-      <button onClick={this.search.bind(this)}> Add To Phone Book </button>
+      <div id="input1">
+      Enter the name: <input name="name" value={this.state.name} onChange={this.onChange.bind(this)}/>       
+      Enter the phone number: <input  name="phoneNumber" value={this.state.phoneNumber}  onChange={this.onChange.bind(this)}/>  
+      <button id = "button"  onClick={this.saveNewPhone.bind(this)}> Add To Phone Book </button>
+      </div>
     </div>
     ) 
   }
